@@ -9,6 +9,8 @@ local FLAKES = 32 -- Snowflake density
 local NISVAL = 39 -- Snow clouds RGB value at night
 local DASVAL = 175 -- Snow clouds RGB value in daytime
 
+local SETTLE = 1
+
 
 -- Stuff
 
@@ -119,12 +121,12 @@ minetest.register_globalstep(function(dtime)
 						y = pposy + 12 + math.random(),
 						z = pposz - 36 + math.random(0, 95)
 					},
-					vel = {
+					velocity = {
 						x = -0.1 + math.random() * 0.2,
 						y = -1.6 + math.random() * 0.2,
 						z = -1.1 + math.random() * 0.2
 					},
-					acc = {x = 0, y = 0, z = 0},
+					acceleration = {x = 0, y = 0, z = 0},
 					expirationtime = 16,
 					size = 2.8,
 					collisiondetection = false,
@@ -138,7 +140,7 @@ minetest.register_globalstep(function(dtime)
 end)
 
 
-			--[[ snow settling
+			-- snow settling
 			if SETTLE and math.random() < SETCHA then -- settling snow
 				local sposx = pposx - 32 + math.random(0, 63)
 				local sposz = pposz - 32 + math.random(0, 63)
@@ -185,4 +187,4 @@ end)
 						end
 					end
 				end
-			end --]]
+			end 
