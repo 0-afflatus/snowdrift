@@ -9,9 +9,6 @@ local FLAKES = 32 -- Snowflake density
 local NISVAL = 39 -- Snow clouds RGB value at night
 local DASVAL = 175 -- Snow clouds RGB value in daytime
 
-local SETTLE = 1
-
-
 -- Stuff
 
 local difsval = DASVAL - NISVAL
@@ -140,7 +137,7 @@ minetest.register_globalstep(function(dtime)
 end)
 
 
-			-- snow settling
+			--[[ snow settling
 			if SETTLE and math.random() < SETCHA then -- settling snow
 				local sposx = pposx - 32 + math.random(0, 63)
 				local sposz = pposz - 32 + math.random(0, 63)
@@ -187,4 +184,4 @@ end)
 						end
 					end
 				end
-			end 
+			end ]]
