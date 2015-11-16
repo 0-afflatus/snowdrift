@@ -9,6 +9,10 @@ local FLAKES = 32 -- Snowflake density
 local NISVAL = 39 -- Snow clouds RGB value at night
 local DASVAL = 175 -- Snow clouds RGB value in daytime
 
+local SETCHA = 0.7 -- 0 to 1. Snow settling chance
+local SETTLE = true -- Snow collects on ground within 32 nodes of player
+
+
 -- Stuff
 
 local difsval = DASVAL - NISVAL
@@ -42,7 +46,7 @@ else
 	np_temp = {
 		offset = 0,
 		scale = 1,
-		spread = {x = 1000, y = 1000, z = 1000},
+		spread = {x = 511, y = 511, z = 511},
 		seed = 5349,
 		octaves = 3,
 		persist = 0.5,
@@ -132,12 +136,10 @@ minetest.register_globalstep(function(dtime)
 					playername = player:get_player_name()
 				})
 			end
-		end
-	end
-end)
 
 
-			--[[ snow settling
+
+			-- snow settling
 			if SETTLE and math.random() < SETCHA then -- settling snow
 				local sposx = pposx - 32 + math.random(0, 63)
 				local sposz = pposz - 32 + math.random(0, 63)
@@ -184,4 +186,7 @@ end)
 						end
 					end
 				end
-			end ]]
+			end 
+		end
+	end
+end)
