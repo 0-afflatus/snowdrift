@@ -53,7 +53,7 @@ else
 		lacunarity = 2.0,
 		--flags = ""
 	}
-	tempthr = -0.4
+	tempthr = -0.45
 end
 
 
