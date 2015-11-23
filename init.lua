@@ -43,16 +43,30 @@ if mg_params.mgname == "v6" then
 	}
 	tempthr = -0.4
 else
+	local temp_table = {}
+	local temp_string = minetest.setting_get("mg_biome_np_heat")
+	temp_string:gsub("%d+%.?%d*", function(c) table.insert(temp_table,c) end)
 	np_temp = {
+		--flags = "",
+		lacunarity = temp_table[9],
+		octaves = temp_table[7],
+		offset = temp_table[1],
+		persistence = temp_table[8],
+		scale = temp_table[2],
+		seed = temp_table[6],
+		spread = {temp_table[3], temp_table[4], temp_table[5]},
+	}
+
+	--[[np_temp = {
 		offset = 0,
 		scale = 1,
-		spread = {x = 511, y = 511, z = 511},
+		spread = {x = 767, y = 767, z = 767},
 		seed = 5349,
 		octaves = 3,
 		persist = 0.5,
 		lacunarity = 2.0,
 		--flags = ""
-	}
+	}]]
 	tempthr = -0.45
 end
 
