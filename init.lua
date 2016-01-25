@@ -45,7 +45,11 @@ if mg_params.mgname == "v6" then
 else
 	local p_temp = "50,50,{767, 767, 767},5349,3,0.5,2.0"
 	local temp_table = {}
-	local temp_string = minetest.setting_get("mg_biome_np_heat") or p_temp
+	local temp_string = minetest.setting_get("mg_biome_np_heat") --or p_temp
+	if temp_string == nil then
+		temp_string = p_temp
+		print("[Snowdrift] WARNING: mg_biome_np_heat not set; using defaults!")
+	end
 	temp_string:gsub("%d+%.?%d*", function(c) table.insert(temp_table,c) end)
 	np_temp = {
 		--flags = "",
